@@ -1,0 +1,34 @@
+import pandas as pd
+df = pd.read_csv('iris.csv')
+feature_types = df.dtypes
+print(feature_types)
+
+df.head()
+df.info()
+df.columns
+import numpy as np
+np.unique(df['Species'])
+df.dtypes
+df.describe()
+df.median()
+df.mean()
+df.mode()
+df.min()
+df.max()
+
+plt.hist(df['SepalLengthCm'],bins=10, color='blue')
+plt.title('Sepal_lenth in cm')
+plt.xlabel('sepal_length')
+plt.ylabel('count')
+plt.show()
+
+sns.histplot(df['SepalLengthCm'])
+
+sns.boxplot(df['SepalLengthCm'])
+
+import matplotlib.pyplot as plt
+fig, axes=plt.subplots(2,2,figsize=(16,9))
+sns.boxplot(x='Species',y='SepalLengthCm',data=df,ax=axes[0,0])
+sns.boxplot(x='Species',y='SepalWidthCm',data=df,ax=axes[0,1])
+sns.boxplot(x='Species',y='PetalLengthCm',data=df,ax=axes[1,0])
+sns.boxplot(x='Species',y='PetalWidthCm',data=df,ax=axes[1,1])

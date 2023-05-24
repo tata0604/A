@@ -1,0 +1,12 @@
+object OddEvenPositiveNegative {
+  def main(args: Array[String]): Unit = {
+    println("Enter a number: ")
+    val input = scala.io.StdIn.readInt()
+
+    if (input % 2 == 0) {
+      println("The number is even.")
+    } else {
+      println("The number is odd.")
+    }
+ }
+}

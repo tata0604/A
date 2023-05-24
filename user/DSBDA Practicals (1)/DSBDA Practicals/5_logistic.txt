@@ -1,0 +1,62 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+data = pd.read_csv("Social_Network_Ads.csv")
+
+x = data.iloc[:, [2, 3]].values
+y = data.iloc[:, 4].values
+
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=0)
+
+from sklearn.preprocessing import StandardScaler
+sc_x=StandardScaler()
+X_train=sc_x.fit_transform(X_train)
+X_test=sc_x.transform(X_test)
+
+lm = LogisticRegression()
+lm.fit(X_train, y_train)
+
+y_pred = lm.predict(X_test)
+
+plt.scatter(X_test[:, 0], X_test[:, 1], c=y_pred, cmap="bwr")
+
+classes = ['No Purchase', 'Purchase']
+scatter = plt.scatter([], [], c=[], cmap="bwr")
+legend_handles = [
+    plt.Line2D([], [], marker='o', color='w', markerfacecolor='blue', markersize=10),
+    plt.Line2D([], [], marker='o', color='w', markerfacecolor='red', markersize=10)
+]
+plt.legend(handles=legend_handles, labels=classes, title="Classes")
+
+plt.title("Logistic Regression")
+plt.xlabel("Age")
+plt.ylabel("Estimated Salary")
+plt.show()
+
+from sklearn.metrics import confusion_matrix
+confusion_matrix = confusion_matrix(y_test, y_pred)
+print(confusion_matrix)
+
+TP=confusion_matrix[0][0]
+FP=confusion_matrix[0][1]
+FN=confusion_matrix[1][0]
+TN=confusion_matrix[1][1]
+
+accuracy=(TP+TN)/(TP+TN+FP+FN)
+error_rate=(FP+FN)/(TP+TN+FN+FP)
+precision=TP/(TP+FP)
+recall=TP/(TP+FN)
+
+print("Confusion Matrix:")
+print(confusion_matrix)
+print("\nTrue Positive (TP):", TP)
+print("False Positive (FP):", FP)
+print("True Negative (TN):", TN)
+print("False Negative (FN):", FN)
+print("\nAccuracy:", accuracy)
+print("Error rate:", error_rate)
+print("Precision:", precision)
+print("Recall:", recall)

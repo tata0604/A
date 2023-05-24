@@ -1,0 +1,48 @@
+import nltk
+nltk.download("punkt")
+nltk.download("stopwords")
+nltk.download("wordnet")
+nltk.download("averaged_perceptron_tagger")
+
+from nltk.tokenize import word_tokenize
+text = "AI is discovered in 1956 but it gained popularity recently"
+print(word_tokenize(text))
+
+from nltk.tokenize import sent_tokenize
+text = "AI is discovered in 1956. but it gained popularity recently"
+print(sent_tokenize(text))
+
+from nltk.stem import PorterStemmer
+e_words = ["wait", "waits", "waited", "waiting"]
+ps = PorterStemmer()
+for w in e_words:
+    rootWord = ps.stem(w)
+    print(rootWord)
+
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words("english"))
+print(stop_words)
+
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+import re
+stop_words = set(stopwords.words("english"))
+print(stop_words)
+text = "How to remove stop words with NLTK library in python?"
+text = re.sub("[^a-zA-Z]"," ",text)
+tokens = word_tokenize(text.lower())
+filtered_text=[]
+for w in tokens:
+      if w not in stop_words:
+         filtered_text.append(w)
+print("Tokenized sentence: ",tokens)
+print("Filtered Sentence: ",filtered_text)
+
+
+from nltk.stem import WordNetLemmatizer
+WordNetLemmatizer 
+wordnet_lemmatizer = WordNetLemmatizer
+text = "Studies studying cries cry"
+tokenization = nltk.word_tokenize(text)
+for w in tokenization: 
+  print("Lemma for {} is {} ".format(w,wordnet_lemmatizer.lemmatize(w)))

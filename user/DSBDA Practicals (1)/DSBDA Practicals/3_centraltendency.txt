@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+df=pd.read_csv('/kaggle/input/employee-salary-dataset/Employee_Salary_Dataset.csv')
+age_groups = ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']
+df['Age_Group'] = pd.cut(df['Age'], bins=[18, 24, 34, 44, 54, 64, 74], labels=['18-24', '25-34', '35-44', '45-54', '55-64', '65+'])
+df
+df.groupby(['Age_Group'])['Salary'].max()
+
+grouped_df = df.groupby('Age_Group')
+grouped_df.describe()['Salary']
+
+df.groupby(['Gender'])['Salary'].mean()
+df.groupby(['Gender'])['Salary'].median()
+df.groupby(['Gender'])['Salary'].min()
+df.groupby(['Gender'])['Salary'].max()
+
+
+df=pd.read_csv('/kaggle/input/employee-salary-dataset/Employee_Salary_Dataset.csv')
+grouped_df = df.groupby('Gender')
+grouped_df.describe()['Salary']
+
+df.mean()
+df['Age'].mean()
+
+df.median()
+df['Age'].median()
+
+df.mode()
+df['Age'].mode()
+
+df.min()
+df.max()
+df.std()
+
+
+
+
+df=pd.read_csv('/kaggle/input/iris/Iris.csv')
+df
+species = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
+grouped_df = df.groupby('Species')
+grouped_df.describe()['SepalLengthCm']
+
+
+
+iriset=(df['Species']=='Iris-setosa')
+print('Iris-setosa')
+print(df[iriset].describe())
+
+
+irisset=(df['Species']=='Iris-versicolor')
+print("Iris-versicolor")
+df[irisset].describe()
