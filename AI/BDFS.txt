@@ -13,7 +13,7 @@ graph = {
  'F':['C'],
  'G':['C']
 }
-dfs(graph, 'B', set())
+dfs(graph, 'A', set())
 
 
 
