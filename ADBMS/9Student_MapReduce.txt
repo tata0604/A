@@ -1,0 +1,15 @@
+db.createCollection("Students")
+use Students
+db.Students.insert({Stud_Name: "Christine", Stud_Year: "SE", Pending_Fees: 25000});
+db.Students.insert({Stud_Name: "Sydney", Stud_Year: "TE", Pending_Fees: 40000});
+db.Students.insert({Stud_Name: "Chandler", Stud_Year: "FE", Pending_Fees: 7000});
+db.Students.insert({Stud_Name: "Joshua", Stud_Year: "TE", Pending_Fees: 30000});
+db.Students.insert({Stud_Name: "Jeremy", Stud_Year: "SE", Pending_Fees: 20000});
+db.Students.insert({Stud_Name: "Joey", Stud_Year: "FE", Pending_Fees: 37000});
+db.Students.insert({Stud_Name: "Mary", Stud_Year: "SE", Pending_Fees: 44000});
+db.Students.insert({Stud_Name: "Martha", Stud_Year: "BE", Pending_Fees: 50000});
+db.Students.insert({Stud_Name: "Monica", Stud_Year: "BE", Pending_Fees: 70000});
+var mapFunction1 =function() {emit(this.Stud_Year, this.Pending_Fees);};
+var reduceFunction1 =function (keyStud_Year, Pending_Fees){return Array.sum(Pending_Fees);};
+db.Student.mapReduce(mapFunction1,reduceFunction1, {out:"Pending_Fees_List"})
+db.Pending_Fees_List.find();

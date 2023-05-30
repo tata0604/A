@@ -1,0 +1,11 @@
+db.createCollection("Mobile_Specs")
+use Mobile_Specs
+db.Mobile_Specs.insertMany([{Mobile_Name: "Realme", RAM: 16, Price: 15000, Camera: 17},{Mobile_Name: "Oppo", RAM: 32, Price: 20000, Camera: 45},])
+db.Mobile_Specs.insertMany([{Mobile_Name: "Redmi", RAM: 64, Price: 18000, Camera: 12},{Mobile_Name: "Poco", RAM: 32, Price: 27000, Camera: 68},{Mobile_Name: "Iphone", RAM: 512, Price: 70000, Camera: 90},{Mobile_Name: "Realme", RAM: 32, Price: 25000, Camera: 40},{Mobile_Name: "Itel", RAM: 16, Price: 12000, Camera: 12}])
+db.Mobile_Specs.find();
+db.Mobile_Specs.find({$where: function() {return (this.RAM == "16")}});
+db.Mobile_Specs.find().limit(5)
+db.Mobile_Specs.find().sort({Price: 1})
+db.Mobile_Specs.find().sort({RAM: -1})
+var mycursor=db.Mobile_Specs.find().skip(5).pretty();
+mycursor;

@@ -1,0 +1,14 @@
+db.CreateDatabase.Book
+use Book
+db.Book.insertMany([{Book_Name: "Wings of Fire", Author: "ABC", Price: 350, No_of_Pages: 300},{Book_Name: "Hello its Me", Author: "ABCD", Price: 4550, No_of_Pages: 600},{Book_Name: "Aishwarya", Author: "ABCDE", Price: 550, No_of_Pages: 200}])
+db.Book.find()
+db.Book.findOne()
+db.Book.findOne({Book_Name:"Aishwarya"})
+db.Book.find({Price:{$gt: 350}})
+db.Book.find({$and: [{Price:{$gt: 350}},{No_of_Pages:{$gt:200}}]})
+db.Book.find({$or:[{Price:{$lte: 350}},{No_of_Pages:{$gte: 1000}}]}).pretty();
+db.Book.find({$or:[{Price:{$lte: 350}},{No_of_Pages:{$gte: 500}}]}).pretty();
+db.Book.find({Price:{$not:{$lte: 400}}}).pretty();
+db.Book.insert({Book_Name: "Random", Author: "Ariana", Price: 700, No_of_Pages: ""})
+db.Book.find({Book_Name: {$regex: /ing/i}})
+db.Book.find({Book_Name: {$regex: /rya/i}})

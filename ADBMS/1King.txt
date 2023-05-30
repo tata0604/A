@@ -1,0 +1,11 @@
+db.createCollection("MapReduce_King")
+use MapReduce_King
+db.MapReduce_King.insert({City: "Los Angels",Population: 300000})
+db.MapReduce_King.insert({City: "Texas",Population: 42000})
+db.MapReduce_King.insert({City: "Vegas",Population: 99000})
+db.MapReduce_King.insert({City: "NashVille",Population: 30000})
+db.MapReduce_King.insert({City: "EdinBurgh",Population: 900000})
+var mapFunction2 = function() {emit(null, this.Population);};
+var reduceFunction2= function(Country, Population) {return Array.sum(Population);};
+db.MapReduce_King.mapReduce(mapFunction2, reduceFunction2, {out:"Result"});
+db.Result.find();
