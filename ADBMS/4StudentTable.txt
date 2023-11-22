@@ -1,9 +1,0 @@
-db.CreateDatabase.Chit4
-use Chit4
-db.Chit4.insert({Student_id: "101E", Student_Name: "Ravi", Dept_Name: "IT", Fees: 30000, Result: "Pass"})
-db.Chit4.insertMany([{Student_id: "102E", Student_Name: "Mangesh", Dept_Name: "IT", Fees: 20000, Result: "Pass"},{Student_id: "103F", Student_Name: "Akshay", Dept_Name: "Comp", Fees: 25000, Result: "Fail"}])
-db.Chit4.find()
-db.Chit4.remove({$where: function() {return (this.Student_id == "101E")}});
-db.Chit4.save({Student_id: "106A", Student_Name: "Ryan", Dept_Name: "IT", Fees: 40000, Result: "Pass"})
-db.Chit4.find();
-

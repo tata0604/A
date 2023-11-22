@@ -1,7 +1,0 @@
-db.CreateDatase.Employee
-use Employee
-db.Employee.insert({Emp_No: 1011, Name: "Srinidhi", Skill: "Developer", Pay_Rate: 20000})
-db.Employee.insertMany([{Emp_No: 1012, Name: "Ovi", Skill: "Tester", Pay_Rate: 25000},{Emp_No: 1013, Name: "Sanchi", Skill: "Analyst Trainee", Pay_Rate: 35000},{Emp_No: 1014, Name: "Suresh", Skill: "Assistent Trainee", Pay_Rate: 22000},{Emp_No: 1015, Name: "Girish", Skill: "Programmer", Pay_Rate: 29000}])
-db.Employee.find()
-db.Employee.remove({$where: function() {return (this.Emp_No == "1013")}});
-db.Employee.save({Emp_No: 1016, Name: "Nilisha", Skill: "Senior Developer", Pay_Rate: 40000})
